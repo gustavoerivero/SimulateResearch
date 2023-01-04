@@ -194,8 +194,7 @@ const CalculatorForm = ({ navigation }) => {
 
       <VStack
         space={4}
-        pt={4}
-        pb={4}
+        py={4}
       >
         <Controller
           name='lambda'
@@ -396,13 +395,13 @@ const CalculatorForm = ({ navigation }) => {
 
           <Button
             style={{
-              backgroundColor: colors.bgSecondary,
+              backgroundColor: colors.bgPrimary,
             }}
             shadow={5}
             rounded={5}
             onPress={() => {
               setCalculate(false)
-              navigation?.navigate('Data', {
+              navigation?.navigate('Tabla de datos', {
                 time: time,
                 queue: queue,
                 servedCustomers: servedCustomers > 0 ? round(totalWaitTime / servedCustomers, 0) : 0,

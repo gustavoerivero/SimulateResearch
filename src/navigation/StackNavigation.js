@@ -16,7 +16,7 @@ const stackRoutes = [
     }
   },
   {
-    name: 'Data',
+    name: 'Tabla de datos',
     component: DataTable,
     options: {
       headerShown: true,

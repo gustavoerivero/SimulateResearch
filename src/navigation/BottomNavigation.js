@@ -17,7 +17,7 @@ const bottomRoutes = [
     component: Home,
     Icon: ({ color, size }) => (
       <Icon
-        name={color === colors.navBar.activeColor ? 'home' : 'home-outline'}
+        name={color === colors.base ? 'home' : 'home-outline'}
         color={color}
         size={size}
       />
@@ -28,7 +28,7 @@ const bottomRoutes = [
     component: CalculatorPage,
     Icon: ({ color, size }) => (
       <Icon
-        name={color === colors.navBar.activeColor ? 'calculator' : 'calculator-outline'}
+        name={color === colors.base ? 'calculator' : 'calculator-outline'}
         color={color}
         size={size}
       />
@@ -41,10 +41,10 @@ const BottomNavigation = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.navBar.activeColor,
+        tabBarActiveTintColor: colors.base,
         tabBarInactiveTintColor: colors.navBar.inactiveColor,
         tabBarInactiveBackgroundColor: colors.base,
-        tabBarActiveBackgroundColor: colors.base,
+        tabBarActiveBackgroundColor: colors.navBar.activeColor,
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
         tabBarStyle: {
