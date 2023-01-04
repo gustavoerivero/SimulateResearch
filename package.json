@@ -32,6 +32,7 @@
     "react-hook-form": "^7.41.4",
     "react-native": "0.70.6",
     "react-native-blob-util": "^0.17.0",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-ionicons": "^4.6.5",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-linear-gradient": "^2.6.2",

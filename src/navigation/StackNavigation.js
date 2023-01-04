@@ -16,7 +16,7 @@ const stackRoutes = [
     }
   },
   {
-    name: 'Tabla de datos',
+    name: 'Resultados de la simulación',
     component: DataTable,
     options: {
       headerShown: true,

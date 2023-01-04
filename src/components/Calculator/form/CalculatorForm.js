@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Button, Divider, FormControl, Text, Stack, VStack, WarningOutlineIcon, HStack } from 'native-base'
 
-import { evaluate, parse, round } from 'mathjs'
+import { round } from 'mathjs'
 
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -14,7 +14,7 @@ import colors from '../../../styled-components/colors'
 
 import { calculatorDefaultValues, calculatorSchema } from '../../../utilities/formValidations/calculatorValidation'
 
-import { InverseTransformMethod, MixedCongruentialMethod } from '../../../utilities/math/formulae'
+import { InverseTransformMethod } from '../../../utilities/math/formulae'
 
 const CalculatorForm = ({ navigation }) => {
 
@@ -32,6 +32,10 @@ const CalculatorForm = ({ navigation }) => {
   const [busy, setBusy] = useState(false)
   const [servedCustomers, setServedCustomers] = useState(0)
   const [totalWaitTime, setTotalWaitTime] = useState(0)
+
+  const [iterator, setIterator] = useState(0)
+
+  const [table, setTable] = useState([])
 
   const {
     control,
@@ -107,11 +111,7 @@ const CalculatorForm = ({ navigation }) => {
           if (queue.length < maxQueueSize) {
             newQueue.push({
               arrivalTime: time,
-              serviceTime: MixedCongruentialMethod(
-                3,
-                5,
-                7
-              ) // Generate customer service time using the mixed sequential method
+              serviceTime: InverseTransformMethod(serviceRate) // Generate customer service time using the mixed sequential method
             })
           }
         }
@@ -134,10 +134,21 @@ const CalculatorForm = ({ navigation }) => {
           }
         }
 
+        let ui = InverseTransformMethod(serviceRate)
+
         // Increased simulation time
         const newTime =
-          time + InverseTransformMethod(serviceRate) // Generate the time until the next event using the inverse transform method
+          time + ui // Generate the time until the next event using the inverse transform method
 
+        setTable([...table, {
+          id: iterator,
+          ui: ui,
+          time: newTime,
+          queue: newQueue.length,
+          customers: newServedCustomers,
+        }])
+
+        setIterator(iterator + 1)
         setTime(newTime)
         setQueue(newQueue)
         setBusy(newBusy)
@@ -374,7 +385,7 @@ const CalculatorForm = ({ navigation }) => {
                 Clientes atendidos:
               </Text>
               <Text>
-                {servedCustomers > 0 ? round(totalWaitTime / servedCustomers, 0) : 0}
+                {servedCustomers}
               </Text>
             </HStack>
 
@@ -388,7 +399,7 @@ const CalculatorForm = ({ navigation }) => {
                 Tiempo promedio de espera:
               </Text>
               <Text>
-                {round(totalWaitTime, 4)}
+                {servedCustomers > 0 ? round(totalWaitTime / servedCustomers, 4) : 0}
               </Text>
             </HStack>
           </VStack>
@@ -401,11 +412,8 @@ const CalculatorForm = ({ navigation }) => {
             rounded={5}
             onPress={() => {
               setCalculate(false)
-              navigation?.navigate('Tabla de datos', {
-                time: time,
-                queue: queue,
-                servedCustomers: servedCustomers > 0 ? round(totalWaitTime / servedCustomers, 0) : 0,
-                totalWaitTime: totalWaitTime
+              navigation?.navigate('Resultados de la simulación', {
+                data: table
               })
             }}
           >

@@ -1,7 +1,7 @@
 const InverseTransformMethod = (value) => {
   try {
     const R = Math.random()
-    return Number(-Math.log(1 - R) / value)
+    return Number(-Math.log(1 - R) / Number(value))
   } catch (error) {
     console.log(`The parameter 'value' cannot be equal to 0: ${error}`)
     return null
