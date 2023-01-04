@@ -1,9 +1,9 @@
 const colors = {
-  base: '#f4f4f4',
-  primary: '#00C28D',
-  secondary: '#066598',
-  bgPrimary: '#152C43',
-  bgSecondary: '#016F6C',
+  base: '#f7f1f4',
+  primary: '#dea2e5',
+  secondary: '#a6d0ee',
+  bgPrimary: '#7339a0',
+  bgSecondary: '#904680',
   white: '#ffffff',
   gray: '#6B6D79',
   gray1: '#ecf0f3',
@@ -25,33 +25,20 @@ const colors = {
     description: '#6B6D79'
   },
   button: {
-    bgPrimary: '#48CBC5',
-    bgSecondary: '#00C28D',
-    fontPrimary: '#1E9C98',
-    fontSecondary: '#80DCDA'
+    bgPrimary: '#904680',
+    bgSecondary: '#708da1',
+    fontPrimary: '#b1d4ff',
+    fontSecondary: '#8da9cc'
   },
   navBar: {
-    activeColor: '#48CBC5',
+    activeColor: '#8da9cc',
     inactiveColor: '#6B6D79'
   },
-  link: {
-    color: '#2CA29F'
-  },
-  infoCard: {
-    topColor: 'rgba(244, 244, 244, 0)',
-    middleColor: 'rgba(21, 44, 67, .2)',
-    middleBottomColor: 'rgba(21, 44, 67, .5)',
-    bottomColor: 'rgba(0, 0, 0, 1)',
-  },
   icon: {
-    primary: '#48CBC5'
-  },
-  connection: {
-    backgroundColor: '#D9D9D9',
-    iconColor: '#6B6D79'
+    primary: '#7339a0'
   },
   divider: {
-    primary: '#48CBC5'
+    primary: '#7339a0'
   }
 }
 

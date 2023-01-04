@@ -24,21 +24,6 @@ const bottomRoutes = [
     )
   },
   {
-    name: 'Post',
-    component: Home,
-    Icon: ({ color, size }) => (
-      <View
-        style={styles.postPage}
-      >
-        <Icon
-          name={color === colors.navBar.activeColor ? 'clipboard' : 'clipboard-outline'}
-          color='#f4f4f4'
-          size={size}
-        />
-      </View>
-    )
-  },
-  {
     name: 'Calculator',
     component: CalculatorPage,
     Icon: ({ color, size }) => (

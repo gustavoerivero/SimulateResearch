@@ -2,11 +2,14 @@ import React from 'react'
 
 import Container from '../components/Container'
 import CalculatorForm from '../components/Calculator/form/CalculatorForm'
+import { ScrollView } from 'native-base'
 
-const CalculatorPage = () => {
+const CalculatorPage = ({ navigation }) => {
   return (
     <Container>
-      <CalculatorForm />
+      <ScrollView>
+        <CalculatorForm navigation={navigation} />
+      </ScrollView>
     </Container>
   )
 }

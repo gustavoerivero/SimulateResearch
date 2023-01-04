@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import BottomNavigation from './BottomNavigation'
 
 import styles from './styled-components/styles'
+import DataTable from '../pages/DataTable'
 
 const Stack = createNativeStackNavigator()
 
@@ -12,6 +13,13 @@ const stackRoutes = [
     component: BottomNavigation,
     options: {
       headerShown: false,
+    }
+  },
+  {
+    name: 'Data',
+    component: DataTable,
+    options: {
+      headerShown: true,
     }
   },
 

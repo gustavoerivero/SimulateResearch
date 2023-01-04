@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 6,
-    shadowColor: colors.bgPrimary,
+    shadowColor: colors.bgSecondary,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
@@ -20,9 +20,9 @@ const styles = StyleSheet.create({
 
   stackStyles: {
     headerStyle: {
-      backgroundColor: colors.primary,
+      backgroundColor: colors.bgSecondary,
     },
-    headerTintColor: colors.secondary,
+    headerTintColor: 'white',
   },
 })
 
