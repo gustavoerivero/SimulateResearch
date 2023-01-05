@@ -83,6 +83,14 @@ const CalculatorForm = ({ navigation }) => {
       setServedCustomers(0)
       setTotalWaitTime(0)
 
+      setTable([])
+      setIterator(0)
+      setTime(0)
+      setQueue([])
+      setBusy(false)
+      setServedCustomers(0)
+      setTotalWaitTime(0)
+
       reset(calculatorDefaultValues)
 
     } catch (error) {
