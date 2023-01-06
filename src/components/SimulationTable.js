@@ -1,5 +1,5 @@
-import React from 'react'
-import { Box, Text, Stack, HStack, VStack } from 'native-base'
+import React, { useState } from 'react'
+import { Box, Text, Stack, HStack, Button } from 'native-base'
 import { round } from 'mathjs'
 import { LineChart } from 'react-native-chart-kit'
 
@@ -8,14 +8,16 @@ import { useWindowDimensions } from 'react-native'
 
 const SimulationTable = ({ data = [] }) => {
 
-  const { width, height } = useWindowDimensions()
+  const { width } = useWindowDimensions()
+
+  const [selection, setSelection] = useState(0)
 
   const titles = [
-    'i',
-    'Ui',
-    'Tiempo\nacumulado',
+    'Tiempo',
     'Clientes\nen cola',
-    'Clientes\natendidos'
+    'Clientes\natendidos',
+    'Media de\nespera',
+    'Total\nclientes'
   ]
 
   return (
@@ -42,12 +44,47 @@ const SimulationTable = ({ data = [] }) => {
         </Stack>
       </HStack>
 
+      <HStack
+        w='100%'
+      >
+        <Button
+          w='50%'
+          bgColor={selection === 0 ? colors.bgPrimary : colors.bgSecondary}
+          shadow={5}
+          rounded={0}
+          onPress={() => setSelection(0)}
+        >
+          <Text
+            bold
+            fontSize='sm'
+            color={colors.base}
+          >
+          Clientes en cola
+          </Text>
+        </Button>
+        <Button
+          w='50%'
+          bgColor={selection === 1 ? colors.bgPrimary : colors.bgSecondary}
+          shadow={5}
+          rounded={0}
+          onPress={() => setSelection(1)}
+        >
+          <Text
+            bold
+            fontSize='sm'
+            color={colors.base}
+          >
+          Clientes atendidos
+          </Text>
+        </Button>
+      </HStack>
+
       <LineChart
         data={{
-          labels: data.map(item => item.id),
+          labels: data.map(item => item.time),
           datasets: [
             {
-              data: data.map(item => item.ui)
+              data: selection === 0 ? data.map(item => item.queue) : data.map(item => item.customers)
             }
           ]
         }}
@@ -134,31 +171,6 @@ const SimulationTable = ({ data = [] }) => {
             justifyContent='center'
           >
             <Stack
-              w='20%'
-              alignItems='center'
-            >
-              <Text
-                italic
-                bold
-                fontSize='sm'
-                color={colors.text.secondary}
-              >
-                {item.id}
-              </Text>
-            </Stack>
-            <Stack
-              alignItems='center'
-              w='20%'
-            >
-              <Text
-                italic
-                fontSize='sm'
-                color={colors.text.secondary}
-              >
-                {round(Number(item.ui), 2)}
-              </Text>
-            </Stack>
-            <Stack
               alignItems='center'
               w='20%'
             >
@@ -194,6 +206,31 @@ const SimulationTable = ({ data = [] }) => {
                 {item.customers}
               </Text>
             </Stack>
+            <Stack
+              w='20%'
+              alignItems='center'
+            >
+              <Text
+                italic
+                fontSize='sm'
+                color={colors.text.secondary}
+              >
+                {round(item.customers > 0 ? item.waitTime / item.customers : 0, 2)}
+              </Text>
+            </Stack>
+            <Stack
+              alignItems='center'
+              w='20%'
+            >
+              <Text
+                italic
+                bold
+                fontSize='sm'
+                color={colors.text.secondary}
+              >
+                {item.queue + item.customers}
+              </Text>
+            </Stack>   
           </HStack>
         </Box>
       )}

@@ -106,8 +106,8 @@ const CalculatorForm = ({ navigation }) => {
     if (calculate) {
       // Simulation is started every second
       const interval = setInterval(() => {
-        // Generate a random number using the inverse transform method to determine if a new customer arrives.
-        const arrive = Math.random() < arrivalRate
+        // Generate a random number using the inverse transform method to determine if a new customer arrives.        
+        const arrive = Math.random() < arrivalRate / 60
 
         let newQueue = [...queue]
         let newBusy = busy
@@ -119,7 +119,7 @@ const CalculatorForm = ({ navigation }) => {
           if (queue.length < maxQueueSize) {
             newQueue.push({
               arrivalTime: time,
-              serviceTime: InverseTransformMethod(serviceRate) // Generate customer service time using the mixed sequential method
+              serviceTime: InverseTransformMethod(serviceRate / 60) // Generate customer service time using the mixed sequential method
             })
           }
         }
@@ -135,34 +135,36 @@ const CalculatorForm = ({ navigation }) => {
             newServedCustomers += 1
             newTotalWaitTime += time - currentCustomer.arrivalTime // Calculate the customer's waiting time and add it to the total.
           }
-        } else {
-          // If no employee is busy and there are customers in the queue, we assign an employee to serve the next customer.
-          if (queue.length > 0) {
-            newBusy = true
-          }
         }
 
-        let ui = InverseTransformMethod(serviceRate)
-
+        // If no employee is busy and there are customers in the queue, we assign an employee to serve the next customer.
+        if (!busy && queue.length > 0) {
+          newQueue = [...queue]
+          newBusy = true
+        }
+        
+        /*
         // Increased simulation time
         const newTime =
           time + ui // Generate the time until the next event using the inverse transform method
+*/
 
         setTable([...table, {
           id: iterator,
-          ui: ui,
-          time: newTime,
+          time: time,
           queue: newQueue.length,
           customers: newServedCustomers,
+          waitTime: newTotalWaitTime,
         }])
 
         setIterator(iterator + 1)
-        setTime(newTime)
+        setTime(time + 1)
         setQueue(newQueue)
         setBusy(newBusy)
         setServedCustomers(newServedCustomers)
         setTotalWaitTime(newTotalWaitTime)
-      }, 1000)
+
+      }, 125)
 
       return () => {
         // Stopping the simulation when the component ceases to exist
@@ -413,9 +415,7 @@ const CalculatorForm = ({ navigation }) => {
           </VStack>
 
           <Button
-            style={{
-              backgroundColor: colors.bgPrimary,
-            }}
+            bgColor={colors.bgPrimary}
             shadow={5}
             rounded={5}
             onPress={() => {
