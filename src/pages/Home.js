@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Stack, HStack, VStack, Text, Divider } from 'native-base'
+
+import SplashScreen from 'react-native-splash-screen'
 
 import Container from '../components/Container'
 import ViewerPDF from '../components/PDF/ViewerPDF'
@@ -7,6 +9,11 @@ import ViewerPDF from '../components/PDF/ViewerPDF'
 import colors from '../styled-components/colors'
 
 const Home = ({ navigation }) => {
+
+  useEffect(() => {
+    SplashScreen.hide()
+  }, [])
+
   return (
     <Container>
       <VStack
