@@ -1,4 +1,4 @@
-package com.simulateresearch;
+package com.flamethyststudio.simulateresearch;
 
 import android.os.Bundle;
 

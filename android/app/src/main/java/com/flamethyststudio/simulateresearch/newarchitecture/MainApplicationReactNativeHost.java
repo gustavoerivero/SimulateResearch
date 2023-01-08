@@ -1,4 +1,4 @@
-package com.simulateresearch.newarchitecture;
+package com.flamethyststudio.simulateresearch.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.simulateresearch.BuildConfig;
-import com.simulateresearch.newarchitecture.components.MainComponentsRegistry;
-import com.simulateresearch.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.flamethyststudio.simulateresearch.BuildConfig;
+import com.flamethyststudio.simulateresearch.newarchitecture.components.MainComponentsRegistry;
+import com.flamethyststudio.simulateresearch.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
