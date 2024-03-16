@@ -1,31 +1,26 @@
-import { StyleSheet } from 'react-native';
+import { Stack as StackRouter } from "expo-router";
 
-import EditScreenInfo from '@/src/components/EditScreenInfo';
-import { Text, View } from '@/src/components/Themed';
+import { Divider, VStack } from "@gluestack-ui/themed";
 
-export default function TabOneScreen() {
+import Container from "@/src/components/Container";
+import Header from "@/src/components/HomeComponents/Header";
+import ViewerPDF from "@/src/components/PDF/ViewerPDF";
+
+const HomeScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-    </View>
+    <Container>
+      <StackRouter.Screen options={{ headerShown: false, animation: "fade" }} />
+      <VStack
+        space="md"
+        p="$4"
+        h="100%"
+      >
+        <Header />
+        <Divider />
+        <ViewerPDF />
+      </VStack>
+    </Container>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+export default HomeScreen;

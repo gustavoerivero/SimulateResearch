@@ -1,59 +1,77 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { Stack, Tabs } from 'expo-router';
 
 import Colors from '@/src/constants/Colors';
-import { useColorScheme } from '@/src/components/useColorScheme';
-import { useClientOnlyValue } from '@/src/components/useClientOnlyValue';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+import { TTab } from "@/src/types/Tab.Type";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const TabLayout = () => {
+
+  const routes: TTab[] = [
+    {
+      name: "index",
+      options: {
+        href: "/",
+        title: "Home",
+        tabBarShowLabel: false,
+        tabBarLabel: "Home",
+        tabBarIcon: ({ color, size }: { color: string, size: number }) => (
+          <Ionicons
+            name={color === Colors.white ? "home" : "home-outline"}
+            color={color}
+            size={size}
+          />
+        )
+      }
+    },
+    {
+      name: "CalculatorScreen",
+      options: {
+        href: "/CalculatorScreen",
+        title: "Calculator",
+        tabBarShowLabel: false,
+        tabBarLabel: "Calculator",
+        tabBarIcon: ({ color, size }: { color: string, size: number }) => (
+          <Ionicons
+            name={color === Colors.white ? "calculator" : "calculator-outline"}
+            color={color}
+            size={size}
+          />
+        )
+      }
+    }
+  ];
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+    <>
+      <Stack.Screen options={{ headerShown: false, animation: "fade" }} />
+      <StatusBar backgroundColor={Colors.bgSecondary} />
+      <Tabs
+        initialRouteName={routes[0].name}
+        screenOptions={{
+          tabBarActiveTintColor: Colors.white,
+          tabBarInactiveTintColor: Colors.gray,
+          tabBarInactiveBackgroundColor: Colors.white,
+          tabBarActiveBackgroundColor: Colors.secondary,
+          tabBarHideOnKeyboard: true,
+          tabBarStyle: {
+            height: '6%',
+          }        
         }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        {routes
+          .map(({ name, options }, index) => (
+            <Tabs.Screen 
+              key={index}
+              name={name}
+              options={options}
+            />
+        ))}
+      </Tabs>
+    </>
   );
-}
+};
+
+export default TabLayout;
