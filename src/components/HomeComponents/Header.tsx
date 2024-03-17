@@ -1,51 +1,76 @@
-import { Box, HStack, Text } from "@gluestack-ui/themed";
+import { Box, Divider, HStack, Text, VStack } from "@gluestack-ui/themed";
 
 import Colors from "@/src/constants/Colors";
+import { ExternalLink } from "../ExternalLink";
 
 const Header = () => {
   return (
-    <HStack
+    <VStack
+      bgColor={Colors.white}
       minWidth="100%"
-      justifyContent="space-between"
+      elevation={5}
     >
-      <Box>
-        <Text
-          fontSize="$xl"
-          bold
-          color={Colors.text.primary}
-        >
-          Simulate Research
-        </Text>
-        <Text
-          fontSize="$md"
-          bold
-          color={Colors.text.secondary}
-        >
-          Manual del sistema
-        </Text>
-      </Box>
-
-      <Box
-        pt="$4"
+      <HStack
+        minWidth="100%"
+        justifyContent="space-between"
+        pt="$2"
+        px="$4"
+        pb="$1"
       >
-        <Text
-          fontSize="$xs"
-          italic
-          color={Colors.text.description}
-          textAlign="right"
+        <Box>
+          <ExternalLink
+            href="https://github.com/gustavoerivero/SimulateResearch"
+          >
+            <Text
+              fontSize="$xl"
+              color={Colors.text.primary}
+              fontFamily="RobotoBold"
+            >
+              Simulate Research
+            </Text>
+          </ExternalLink>
+          <Text
+            fontSize="$md"
+            bold
+            italic
+            fontFamily="RobotoBoldItalic"
+            color={Colors.text.secondary}
+          >
+            Manual del sistema
+          </Text>
+        </Box>
+
+        <Box
+          pt="$4"
         >
-          Gustavo Rivero
-        </Text>
-        <Text
-          fontSize="$xs"
-          italic
-          color={Colors.text.description}
-          textAlign="right"
-        >
-          Jesús Manzano
-        </Text>
-      </Box>
-    </HStack>
+          <ExternalLink
+            href="https://github.com/gustavoerivero"
+          >
+            <Text
+              fontSize="$xs"
+              color={Colors.text.description}
+              textAlign="right"
+              fontFamily="RobotoItalic"
+            >
+              Gustavo Rivero
+            </Text>
+          </ExternalLink>
+          <ExternalLink
+            href="https://github.com/Warloy"
+          >
+            <Text
+              fontSize="$xs"
+              color={Colors.text.description}
+              textAlign="right"
+              fontFamily="RobotoItalic"
+            >
+              Jesús Manzano
+            </Text>
+          </ExternalLink>
+        </Box>
+      </HStack>
+      <Divider />
+    </VStack>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Stack as StackRouter } from "expo-router";
 import { Box } from "@gluestack-ui/themed";
 
 import { IContainer } from "@/src/interfaces/Container.Interface";
@@ -13,6 +14,7 @@ const Container = ({ statusBarColor = Colors.bgSecondary, hiddenBar = false, chi
       topColor={Colors.white}
       bottomColor={Colors.gray1}
     >
+      <StackRouter.Screen options={{ headerShown: false, animation: "fade" }} />
       <StatusBar 
         bgColor={statusBarColor}
         hidden={hiddenBar}
