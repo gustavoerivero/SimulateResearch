@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import { StatusBar } from "expo-status-bar";
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { Stack, Tabs } from 'expo-router';
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Stack, Tabs } from "expo-router";
 
-import Colors from '@/src/constants/Colors';
+import Colors from "@/src/constants/Colors";
 
 import { TTab } from "@/src/types/Tab.Type";
 
@@ -57,7 +57,7 @@ const TabLayout = () => {
           tabBarActiveBackgroundColor: Colors.secondary,
           tabBarHideOnKeyboard: true,
           tabBarStyle: {
-            height: '6%',
+            height: "6%",
           }        
         }}
       >

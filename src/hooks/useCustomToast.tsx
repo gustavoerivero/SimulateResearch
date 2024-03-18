@@ -1,50 +1,45 @@
-import { Dimensions } from "react-native";
-import { useToast, Avatar, Text, HStack, Icon } from "native-base";
+import { useToast, Toast as GlueToast, VStack, ToastTitle, ToastDescription } from "@gluestack-ui/themed";
 import { Ionicons } from "@expo/vector-icons";
 
 import { IToastProps } from "@/src/interfaces/useCustomToast.Interface";
 import useUUID from "./useUUID";
 
-import colors from "@/src/constants/Colors";
-
-const { width } = Dimensions.get("window");
+import Colors from "@/src/constants/Colors";
 
 const Toast = ({
   id = useUUID(),
-  text = "",
-  color = colors.primary,
-  bgColor = colors.secondary
+  action = "attention",
+  title = "",
+  description = "",
+  bgColor
 }: IToastProps) => (
-  <HStack
-    id={id}
-    h="20"
-    w={width}
-    bottom={-50}
-    backgroundColor={bgColor}
-    px={10}
-    pr={20}
-    space={2}
-    alignItems="center"
+  <GlueToast
+    nativeID={id}
+    action={action}
+    bg={bgColor}
   >
-    <Avatar
-      bgColor={color}
+    <Ionicons
+      name="information-circle-outline"
+      color={Colors.gray}
+      size={25}
+      style={{
+        marginTop: 5,
+        marginRight: 10
+      }}
+    />
+    <VStack
+      space="xs"
     >
-      <Icon
-        as={Ionicons}
-        name="ios-information-circle-outline"
-        size={6}
-        color={colors.white}
-      />
-    </Avatar>
-    <Text
-      color={color}
-      bold
-      pr={2}
-      textAlign="justify"
-    >
-      {text}
-    </Text>
-  </HStack>
+      <ToastTitle>
+        {title}
+      </ToastTitle>
+      <ToastDescription
+        w="$80"
+      >
+        {description}
+      </ToastDescription>
+    </VStack>
+  </GlueToast>
 );
 
 const useCustomToast = () => {
@@ -52,11 +47,13 @@ const useCustomToast = () => {
 
   const showSuccessToast = (text = "") => {
     toast.show({
+
       render: () => (
         <Toast
-          text={text}
-          color={colors.secondary}
-          bgColor={colors.base}
+          title="¡Éxito!"
+          description={text}
+          color={Colors.secondary}
+          bgColor={Colors.base}
         />
       )
     })
@@ -66,19 +63,21 @@ const useCustomToast = () => {
     toast.show({
       render: () => (
         <Toast
-          text={text}
-          color={colors.error.primary}
-          bgColor={colors.error.bgError}
+          title="¡Aviso!"
+          description={text}
+          color={Colors.error.primary}
+          bgColor={Colors.error.bgError}
         />
       )
     })
   };
 
-  const showToast = (text = "", color = colors.secondary, bgColor = colors.base) => {
+  const showToast = (title = "", text = "", color = Colors.secondary, bgColor = Colors.base) => {
     toast.show({
       render: () => (
         <Toast
-          text={text}
+          title={title}
+          description={text}
           color={color}
           bgColor={bgColor}
         />

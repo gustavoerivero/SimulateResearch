@@ -1,33 +1,19 @@
-import { StyleSheet } from "react-native";
-import { Stack as StackRouter } from "expo-router";
+import { ScrollView } from "@gluestack-ui/themed";
 
-import { Box, Text, View } from "@gluestack-ui/themed"
+import Container from "@/src/components/Container";
+
+import CalculatorForm from "@/src/components/CalculatorComponents/form/CalculatorForm";
 
 const CalculatorScreen = () => {
   return (
-    <Box style={styles.container}>
-      <StackRouter.Screen options={{ headerShown: false, animation: "fade" }} />
-      <Text style={styles.title}>Calculator</Text>
-      <View style={styles.separator} />
-    </Box>
+    <Container>      
+      <ScrollView
+        h="100%"
+      >
+        <CalculatorForm />
+      </ScrollView>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
 
 export default CalculatorScreen;
