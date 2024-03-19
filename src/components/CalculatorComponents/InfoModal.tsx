@@ -33,7 +33,7 @@ const InfoModal = ({ isOpen, setClose }: IInfoModal) => {
           >
             <Text
               fontFamily="RobotoBold"
-              fontSize="$lg"
+              fontSize="$md"
               color={Colors.text.primary}
             >
               Información sobre el simulador
@@ -250,6 +250,7 @@ const InfoModal = ({ isOpen, setClose }: IInfoModal) => {
           >
             <ButtonText
               fontFamily="RobotoBold"
+              fontSize="$sm"
             >
               Cerrar
             </ButtonText>

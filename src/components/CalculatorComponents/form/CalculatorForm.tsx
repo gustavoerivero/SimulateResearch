@@ -524,6 +524,7 @@ const CalculatorForm = () => {
         >
           <ButtonText
             fontFamily="RobotoBold"
+            fontSize="$sm"
           >
             Limpiar
           </ButtonText>
@@ -538,6 +539,7 @@ const CalculatorForm = () => {
           {(isLoading || calculate) && <ButtonSpinner mr="$1" />}
           <ButtonText
             fontFamily="RobotoBold"
+            fontSize="$sm"
           >
             {(isLoading || calculate) ? "Calculando" : "Calcular"}
           </ButtonText>
@@ -551,6 +553,7 @@ const CalculatorForm = () => {
         >
           <ButtonText
             fontFamily="RobotoBold"
+            fontSize="$sm"
           >
             Detener
           </ButtonText>
@@ -581,6 +584,7 @@ const CalculatorForm = () => {
           >
             <ButtonText
               fontFamily="RobotoBold"
+              fontSize="$sm"
             >
               Finalizar
             </ButtonText>
