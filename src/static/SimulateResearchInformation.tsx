@@ -33,7 +33,7 @@ const SimulateResearchInformation = {
       description: `Tanto la tasa de llegadas como la tasa de servicio ya se interpretan dentro del sistema bajo la unidad de tiempo de horas.`
     },
     second: {
-      title: `Método de transformada inversa`,
+      title: `Método de la transformada inversa`,
       description: `Se hace uso de este método para determinar el tiempo que tendrá un "cliente" siendo atendido en el sistema haciendo uso de la tasa de servicio.`
     }
   }

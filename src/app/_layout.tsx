@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Stack } from "expo-router";
+import { Provider } from "react-redux";
 import { useFonts } from "expo-font";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import * as SplashScreen from "expo-splash-screen";
@@ -8,6 +9,8 @@ import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
+
+import { store } from "../store";
 
 import { useColorScheme } from "@/src/components/useColorScheme";
 
@@ -59,11 +62,13 @@ function RootLayoutNav() {
     <GluestackUIProvider
       config={config}
     >
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        </Stack>
-      </ThemeProvider>
+      <Provider store={store} >
+        <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          </Stack>
+        </ThemeProvider>
+      </Provider>
     </GluestackUIProvider>
   );
 }

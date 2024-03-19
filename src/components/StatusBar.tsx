@@ -7,12 +7,14 @@ import { IStatusBar } from "@/src/interfaces/StatusBar.Interface";
 
 import styles from "./styled-components/styles";
 
-const StatusBar = ({ bgColor = Colors.bgSecondary, hidden = false }: IStatusBar) => {
+const StatusBar = ({ bgColor = Colors.bgSecondary, hidden = false, style = "light" }: IStatusBar) => {
   return (
     <SafeAreaView style={styles.container}>
       <Bar
         backgroundColor={bgColor}
-        hidden={hidden} />
+        hidden={hidden} 
+        style={style}
+      />
     </SafeAreaView>
   )
 };

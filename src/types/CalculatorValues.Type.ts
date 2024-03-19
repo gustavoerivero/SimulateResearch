@@ -11,6 +11,14 @@ export type TQueue = {
   serviceTime: number;
 }[];
 
+export type TSimulationRow = {
+  id: number;
+  time: number;
+  queue: number;
+  customers: number;
+  waitTime: number;
+};
+
 export type TSimulationTable = {
   id: number;
   time: number;

@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "expo-router";
+
+import { TouchableOpacity } from "react-native";
+
 import {
   Box,
   VStack,
@@ -22,24 +26,30 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { calculatorDefaultValues, calculatorSchema } from "@/src/schemas/CalculatorSchema";
+
+import { InverseTransformMethod } from "@/src/utils/math";
 
 import useCustomToast from "@/src/hooks/useCustomToast";
 import useLoading from "@/src/hooks/useLoading";
 
-import { calculatorDefaultValues, calculatorSchema } from "@/src/schemas/CalculatorSchema";
-import { TCalculatorValue, TCalculatorValues, TQueue, TSimulationTable } from "@/src/types/CalculatorValues.Type";
-import { InverseTransformMethod } from "@/src/utils/math";
 import Colors from "@/src/constants/Colors";
-import { TouchableOpacity } from "react-native";
+
 import StyledField from "../../StyledField";
 import SimulationResult from "../SimulationResult";
 import InfoModal from "../InfoModal";
-import { Link } from "expo-router";
+
+import { useAppDispatch, useAppSelector } from "@/src/hooks/useRedux";
+import { addRow, resetTable, setTable } from "@/src/features/table/tableSlice";
+
+import { TCalculatorValue, TCalculatorValues, TQueue } from "@/src/types/CalculatorValues.Type";
 
 const CalculatorForm = () => {
 
   const { showErrorToast } = useCustomToast();
   const { isLoading, startLoading, stopLoading } = useLoading();
+
+  const dispatch = useAppDispatch();
 
   const ref = useRef();
 
@@ -61,8 +71,6 @@ const CalculatorForm = () => {
   const [totalWaitTime, setTotalWaitTime] = useState(0);
 
   const [iterator, setIterator] = useState(0);
-
-  const [table, setTable] = useState<TSimulationTable>([])
 
   const {
     control,
@@ -135,19 +143,19 @@ const CalculatorForm = () => {
 
       setIterator(0);
 
-      setTime(0)
-      setQueue([])
-      setBusy(false)
-      setServedCustomers(0)
-      setTotalWaitTime(0)
+      setTime(0);
+      setQueue([]);
+      setBusy(false);
+      setServedCustomers(0);
+      setTotalWaitTime(0);
 
-      setTable([])
-      setTime(0)
-      setQueue([])
-      setBusy(false)
-      setServedCustomers(0)
-      setTotalWaitTime(0)
+      setTime(0);
+      setQueue([]);
+      setBusy(false);
+      setServedCustomers(0);
+      setTotalWaitTime(0);
 
+      dispatch(resetTable());
       reset(calculatorDefaultValues);
 
     } catch (error) {
@@ -159,6 +167,16 @@ const CalculatorForm = () => {
     try {
       stopLoading();
       setCalculate(false);
+
+      let table = useAppSelector(state => state.table);
+
+      table = table.filter(item => {
+        const itemExist = table.findIndex(other => other.id == item.id);
+        return itemExist === table.indexOf(item);
+      });
+
+      dispatch(setTable(table));
+
     } catch (error) {
       showErrorToast(JSON.stringify(error));
     }
@@ -206,13 +224,13 @@ const CalculatorForm = () => {
           newBusy = true;
         }
 
-        setTable([...table, {
+        dispatch(addRow({
           id: iterator,
           time: time,
           queue: newQueue.length,
           customers: newServedCustomers,
-          waitTime: newTotalWaitTime,
-        }]);
+          waitTime: newTotalWaitTime
+        }));
 
         setIterator(iterator + 1);
         setTime(time + 1);
@@ -479,12 +497,7 @@ const CalculatorForm = () => {
         mt="$4"
       >
         <Link
-          href={{
-            pathname: "/result/",
-            params: {
-              table: "abc" 
-            }
-          }}
+          href={"/result/"}
           asChild
         >
           <Button

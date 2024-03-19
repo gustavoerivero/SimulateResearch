@@ -8,19 +8,28 @@ import StatusBar from "./StatusBar";
 
 import Colors from "@/src/constants/Colors";
 
-const Container = ({ statusBarColor = Colors.bgSecondary, hiddenBar = false, children }: IContainer) => {
+const Container = ({ statusBarColor = Colors.bgSecondary, statusBarStyle = "light", hiddenBar = false, headerShown = false, headerTitle, children }: IContainer) => {
   return (
     <Background
       topColor={Colors.white}
       bottomColor={Colors.gray1}
     >
-      <StackRouter.Screen options={{ headerShown: false, animation: "fade" }} />
-      <StatusBar 
+      <StackRouter.Screen
+        options={{
+          headerShown,
+          headerTitle,
+          animation: "fade",
+          headerStyle: { backgroundColor: Colors.bgSecondary },
+          headerTintColor: Colors.white,
+        }}
+      />
+      <StatusBar
+        style={statusBarStyle}
         bgColor={statusBarColor}
         hidden={hiddenBar}
       />
       <Box
-        h="95%"
+        h={headerShown ? "100%" : "95%"}
       >
         {children}
       </Box>
