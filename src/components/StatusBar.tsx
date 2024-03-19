@@ -14,6 +14,7 @@ const StatusBar = ({ bgColor = Colors.bgSecondary, hidden = false, style = "ligh
         backgroundColor={bgColor}
         hidden={hidden} 
         style={style}
+        translucent={false}
       />
     </SafeAreaView>
   )
