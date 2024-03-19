@@ -19,14 +19,17 @@ import {
   FormControlErrorText,
   InputField,
   ButtonText,
-  ButtonSpinner
+  ButtonSpinner,
+  InputSlot,
 } from "@gluestack-ui/themed";
 
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+
+import { round } from "mathjs";
 
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { calculatorDefaultValues, calculatorSchema } from "@/src/schemas/CalculatorSchema";
+import { calculatorDefaultValues, calculatorSchema, TCalculatorFormValues } from "@/src/schemas/CalculatorSchema";
 
 import { InverseTransformMethod } from "@/src/utils/math";
 
@@ -78,6 +81,7 @@ const CalculatorForm = () => {
     formState: {
       errors
     },
+    setValue,
     reset
   } = useForm({
     mode: "onSubmit",
@@ -164,22 +168,21 @@ const CalculatorForm = () => {
   };
 
   const stopSimulation = () => {
-    try {
-      stopLoading();
-      setCalculate(false);
+    stopLoading();
+    setCalculate(false);
 
-      let table = useAppSelector(state => state.table);
+    let table = useAppSelector(state => state.table);
 
-      table = table.filter(item => {
-        const itemExist = table.findIndex(other => other.id == item.id);
-        return itemExist === table.indexOf(item);
-      });
+    table = table.filter(item => {
+      const itemExist = table.findIndex(other => other.id == item.id);
+      return itemExist === table.indexOf(item);
+    });
 
-      dispatch(setTable(table));
+    dispatch(setTable(table));
+  };
 
-    } catch (error) {
-      showErrorToast(JSON.stringify(error));
-    }
+  const setFormValue = (attribute: TCalculatorFormValues, value: string) => {
+    setValue(attribute, value);
   };
 
   useEffect(() => {
@@ -355,10 +358,25 @@ const CalculatorForm = () => {
               >
                 <InputField
                   placeholder="Tasa de llegada de clientes (λ)"
-
                   defaultValue={value ?? ""}
                   onChangeText={onChange}
                 />
+                <InputSlot pr="$2.5" >
+                  <TouchableOpacity
+                    onPress={() => {
+                      const value = (round(Math.random() * 100, 0)).toString();
+                      setFormValue("lambda", value);
+                    }}
+                  >
+                    <Box>
+                      <MaterialCommunityIcons
+                        name="dice-multiple-outline"
+                        size={30}
+                        color={Colors.bgPrimary}
+                      />
+                    </Box>
+                  </TouchableOpacity>
+                </InputSlot>
               </StyledField>
 
               <FormControlError>
@@ -395,6 +413,22 @@ const CalculatorForm = () => {
                   defaultValue={value ?? ""}
                   onChangeText={onChange}
                 />
+                <InputSlot pr="$2.5" >
+                  <TouchableOpacity
+                    onPress={() => {
+                      const value = (round(Math.random() * 100, 0)).toString();
+                      setFormValue("mu", value);
+                    }}
+                  >
+                    <Box>
+                      <MaterialCommunityIcons
+                        name="dice-multiple-outline"
+                        size={30}
+                        color={Colors.bgPrimary}
+                      />
+                    </Box>
+                  </TouchableOpacity>
+                </InputSlot>
               </StyledField>
 
               <FormControlError>
@@ -431,6 +465,22 @@ const CalculatorForm = () => {
                   defaultValue={value ?? ""}
                   onChangeText={onChange}
                 />
+                <InputSlot pr="$3" >
+                  <TouchableOpacity
+                    onPress={() => {
+                      const value = (9999).toString();
+                      setFormValue("maxQueueSize", value);
+                    }}
+                  >
+                    <Box>
+                      <Ionicons
+                        name="infinite"
+                        size={25}
+                        color={Colors.bgPrimary}
+                      />
+                    </Box>
+                  </TouchableOpacity>
+                </InputSlot>
               </StyledField>
 
               <FormControlError>

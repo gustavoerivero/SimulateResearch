@@ -29,3 +29,5 @@ export const calculatorDefaultValues = {
   mu: "",
   maxQueueSize: ""
 };
+
+export type TCalculatorFormValues = "lambda" | "mu" | "maxQueueSize";
