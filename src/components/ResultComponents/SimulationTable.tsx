@@ -44,10 +44,10 @@ const SimulationTable = () => {
           >
             <Text
               fontFamily="RobotoBold"
-              fontSize="$sm"
+              fontSize="$xs"
               color={Colors.base}
               textAlign="center"
-              lineHeight="$xs"
+              lineHeight="$2xs"
             >
               {item}
             </Text>
@@ -74,7 +74,7 @@ const SimulationTable = () => {
                 fontSize="$sm"
                 color={Colors.text.secondary}
               >
-                {round(Number(item.time + 1), 2)}
+                {round(Number(item.time), 2)}
               </Text>
             </Box>
 

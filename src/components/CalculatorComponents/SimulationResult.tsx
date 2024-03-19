@@ -22,9 +22,9 @@ const SimulationResult = ({ time, servedCustomers, totalWaitTime, queue }: ISimu
         justifyContent="center"
       >
         <Text
-          textAlign="center" 
+          textAlign="center"
           fontFamily="RobotoBold"
-          fontSize="$lg"
+          fontSize="$md"
           color={Colors.text.primary}
         >
           Simulación en tiempo real
@@ -38,12 +38,16 @@ const SimulationResult = ({ time, servedCustomers, totalWaitTime, queue }: ISimu
           >
             <Text
               fontFamily="RobotoBold"
+              fontSize="$sm"
               color={Colors.text.secondary}
             >
               Tiempo actual:
             </Text>
 
-            <Text>
+            <Text
+              fontFamily="RobotoRegular"
+              fontSize="$sm"
+            >
               {round(time, 4)}
             </Text>
           </HStack>
@@ -53,12 +57,16 @@ const SimulationResult = ({ time, servedCustomers, totalWaitTime, queue }: ISimu
           >
             <Text
               fontFamily="RobotoBold"
+              fontSize="$sm"
               color={Colors.text.secondary}
             >
               Tamaño de la cola:
             </Text>
 
-            <Text>
+            <Text
+              fontFamily="RobotoRegular"
+              fontSize="$sm"
+            >
               {queue.length}
             </Text>
           </HStack>
@@ -68,12 +76,16 @@ const SimulationResult = ({ time, servedCustomers, totalWaitTime, queue }: ISimu
           >
             <Text
               fontFamily="RobotoBold"
+              fontSize="$sm"
               color={Colors.text.secondary}
             >
               Clientes atendidos:
             </Text>
 
-            <Text>
+            <Text
+              fontFamily="RobotoRegular"
+              fontSize="$sm"
+            >
               {servedCustomers}
             </Text>
           </HStack>
@@ -83,12 +95,16 @@ const SimulationResult = ({ time, servedCustomers, totalWaitTime, queue }: ISimu
           >
             <Text
               fontFamily="RobotoBold"
+              fontSize="$sm"
               color={Colors.text.secondary}
             >
               Tiempo promedio de espera
             </Text>
 
-            <Text>
+            <Text
+              fontFamily="RobotoRegular"
+              fontSize="$sm"
+            >
               {servedCustomers > 0 ? round(totalWaitTime / servedCustomers, 4) : 0}
             </Text>
           </HStack>

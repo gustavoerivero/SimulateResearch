@@ -49,6 +49,8 @@ import { TCalculatorValue, TCalculatorValues, TQueue } from "@/src/types/Calcula
 
 const CalculatorForm = () => {
 
+  const table = useAppSelector(state => state.table);
+
   const { showErrorToast } = useCustomToast();
   const { isLoading, startLoading, stopLoading } = useLoading();
 
@@ -171,14 +173,12 @@ const CalculatorForm = () => {
     stopLoading();
     setCalculate(false);
 
-    let table = useAppSelector(state => state.table);
-
-    table = table.filter(item => {
+    let tableFiltered = table.filter(item => {
       const itemExist = table.findIndex(other => other.id == item.id);
       return itemExist === table.indexOf(item);
     });
 
-    dispatch(setTable(table));
+    dispatch(setTable(tableFiltered));
   };
 
   const setFormValue = (attribute: TCalculatorFormValues, value: string) => {
@@ -229,7 +229,7 @@ const CalculatorForm = () => {
 
         dispatch(addRow({
           id: iterator,
-          time: time,
+          time: time + 1,
           queue: newQueue.length,
           customers: newServedCustomers,
           waitTime: newTotalWaitTime
@@ -290,15 +290,13 @@ const CalculatorForm = () => {
           </Text>
           <Text
             py="$1.5"
-            fontSize="$sm"
+            fontSize="$xs"
             fontFamily="RobotoBold"
             color={Colors.text.description}
             textAlign="center"
             lineHeight="$xs"
           >
-            {`Para modelos con variables de distribución exponencial
-            usando el método de la transformada inversa.
-          `}
+            Para modelos con variables de distribución exponencial usando el método de la transformada inversa.
           </Text>
         </Box>
         <TouchableOpacity
@@ -307,7 +305,7 @@ const CalculatorForm = () => {
         >
           <Box
             position="absolute"
-            right={-30}
+            right={"-25%"}
             w="$10"
             h="$10"
             justifyContent="center"
@@ -348,7 +346,10 @@ const CalculatorForm = () => {
               isInvalid={errors.lambda && value !== null}
             >
               <FormControlLabel>
-                <FormControlLabelText>
+                <FormControlLabelText
+                  fontFamily="RobotoBold"
+                  fontSize="$sm"
+                >
                   Tasa de llegada de clientes (λ)
                 </FormControlLabelText>
               </FormControlLabel>
@@ -381,7 +382,10 @@ const CalculatorForm = () => {
 
               <FormControlError>
                 <FormControlErrorIcon as={AlertCircleIcon} />
-                <FormControlErrorText>
+                <FormControlErrorText
+                  fontFamily="RobotoRegular"
+                  fontSize="$xs"
+                >
                   {errors.lambda?.message}
                 </FormControlErrorText>
               </FormControlError>
@@ -399,7 +403,10 @@ const CalculatorForm = () => {
               isInvalid={errors.mu && value !== null}
             >
               <FormControlLabel>
-                <FormControlLabelText>
+                <FormControlLabelText
+                  fontFamily="RobotoBold"
+                  fontSize="$sm"
+                >
                   Tasa de servicio (µ)
                 </FormControlLabelText>
               </FormControlLabel>
@@ -433,7 +440,10 @@ const CalculatorForm = () => {
 
               <FormControlError>
                 <FormControlErrorIcon as={AlertCircleIcon} />
-                <FormControlErrorText>
+                <FormControlErrorText
+                  fontFamily="RobotoRegular"
+                  fontSize="$xs"
+                >
                   {errors.mu?.message}
                 </FormControlErrorText>
               </FormControlError>
@@ -451,7 +461,10 @@ const CalculatorForm = () => {
               isInvalid={errors.maxQueueSize && value !== null}
             >
               <FormControlLabel>
-                <FormControlLabelText>
+                <FormControlLabelText
+                  fontFamily="RobotoBold"
+                  fontSize="$sm"
+                >
                   Tamaño de cola (k)
                 </FormControlLabelText>
               </FormControlLabel>
@@ -485,7 +498,10 @@ const CalculatorForm = () => {
 
               <FormControlError>
                 <FormControlErrorIcon as={AlertCircleIcon} />
-                <FormControlErrorText>
+                <FormControlErrorText
+                  fontFamily="RobotoRegular"
+                  fontSize="$xs"
+                >
                   {errors.maxQueueSize?.message}
                 </FormControlErrorText>
               </FormControlError>
@@ -501,35 +517,41 @@ const CalculatorForm = () => {
       >
         <Button
           onPress={resetValues}
-          w="$32"
+          w="32%"
           bgColor={Colors.button.bgSecondary}
           elevation={5}
           isDisabled={isLoading || calculate}
         >
-          <ButtonText>
+          <ButtonText
+            fontFamily="RobotoBold"
+          >
             Limpiar
           </ButtonText>
         </Button>
         <Button
-          w="$32"
+          w="32%"
           onPress={handleSubmit(onSubmit)}
           elevation={5}
           isDisabled={isLoading || calculate}
           bgColor={Colors.button.bgPrimary}
         >
           {(isLoading || calculate) && <ButtonSpinner mr="$1" />}
-          <ButtonText>
+          <ButtonText
+            fontFamily="RobotoBold"
+          >
             {(isLoading || calculate) ? "Calculando" : "Calcular"}
           </ButtonText>
         </Button>
         <Button
-          w="$32"
+          w="32%"
           onPress={stopSimulation}
           elevation={5}
           isDisabled={!isLoading && !calculate}
           bgColor={Colors.bgPrimary}
         >
-          <ButtonText>
+          <ButtonText
+            fontFamily="RobotoBold"
+          >
             Detener
           </ButtonText>
         </Button>
@@ -551,13 +573,15 @@ const CalculatorForm = () => {
           asChild
         >
           <Button
-            w="$48"
+            w="48%"
             elevation={5}
             onPress={stopSimulation}
             isDisabled={!isLoading && !calculate && time == 0}
             bgColor={Colors.primary}
           >
-            <ButtonText>
+            <ButtonText
+              fontFamily="RobotoBold"
+            >
               Finalizar
             </ButtonText>
           </Button>

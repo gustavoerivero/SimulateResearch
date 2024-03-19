@@ -29,7 +29,7 @@ const Container = ({ statusBarColor = Colors.bgSecondary, statusBarStyle = "ligh
         hidden={hiddenBar}
       />
       <Box
-        h={headerShown ? "100%" : "95%"}
+        h="$full"
       >
         {children}
       </Box>

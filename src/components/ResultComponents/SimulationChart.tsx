@@ -40,7 +40,7 @@ const SimulationChart = () => {
       >
         <Text
           fontFamily="RobotoBold"
-          fontSize="$lg"
+          fontSize="$md"
           textAlign="center"
           lineHeight="$sm"
           color={Colors.base}
@@ -56,7 +56,10 @@ const SimulationChart = () => {
           bgColor={stageSelected === 0 ? Colors.bgPrimary : Colors.bgSecondary}
           onPress={showQueueClientsChart}
         >
-          <ButtonText>
+          <ButtonText
+            fontFamily="RobotoBold"
+            fontSize="$sm"
+          >
             Clientes en cola
           </ButtonText>
         </Button>
@@ -67,7 +70,10 @@ const SimulationChart = () => {
           bgColor={stageSelected !== 0 ? Colors.bgPrimary : Colors.bgSecondary}
           onPress={showAttendedClientsChart}
         >
-          <ButtonText>
+          <ButtonText
+            fontFamily="RobotoBold"
+            fontSize="$sm"
+          >
             Clientes atendidos
           </ButtonText>
         </Button>
@@ -79,7 +85,7 @@ const SimulationChart = () => {
       >
         <LineChart
           data={{
-            labels: table.map(item => (item.time + 1).toString()),
+            labels: table.map(item => (item.time).toString()),
             datasets: [{
               data: stageSelected === 0 ?
                 table.map(item => item.queue) :

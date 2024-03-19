@@ -245,10 +245,12 @@ const InfoModal = ({ isOpen, setClose }: IInfoModal) => {
         <ModalFooter>
           <Button
             onPress={setClose}
-            w="$32"
+            w="42%"
             bgColor={Colors.button.bgSecondary}
           >
-            <ButtonText>
+            <ButtonText
+              fontFamily="RobotoBold"
+            >
               Cerrar
             </ButtonText>
           </Button>
