@@ -71,3 +71,12 @@ This page shows the results obtained by the simulation. For this purpose, it has
 * **Chart of customers in queue (Clientes en cola):** This chart shows the number of customers who remained in queue before being served by the system.
 * **Chart of customers served (Clientes atendidos):** This chart shows the number of customers who have been served.
 * **Data table by iteration (Tabla de datos por iteración):** This table illustrates in each of its rows the time (Tiempo) (in minutes), the number of customers who were in queue before being served (Clientes en cola), the number of customers served for the time elapsed (Clientes atendidos), the average waiting time per customer (Media de espera) and the total number of customers (Total clientes), which represents the sum between customers in queue and customers served.
+
+## Authors 💻
+
+*  @gustavoerivero  - [gustavoerivero](https://github.com/gustavoerivero)
+*  @Warloy - [Warloy](https://github.com/Warloy)
+
+
+---
+⌨️ made with ❤️ by [Flamethyst] 

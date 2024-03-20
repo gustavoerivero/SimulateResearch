@@ -359,6 +359,7 @@ const CalculatorForm = () => {
               >
                 <InputField
                   placeholder="Tasa de llegada de clientes (λ)"
+                  keyboardType="numeric"
                   defaultValue={value ?? ""}
                   onChangeText={onChange}
                 />

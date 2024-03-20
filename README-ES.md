@@ -71,3 +71,12 @@ Esta página muestra los resultados obtenidos por la simulación. Para ello, dis
 * **Gráfico de clientes en cola:** Este gráfico muestra la cantidad de clientes que permanecieron haciendo cola antes de ser atendidos por el sistema.
 * **Gráfico de clientes atendidos:** Este gráfico muestra la cantidad de clientes que han sido atendidos
 * **Tabla de datos por iteración:** Esta tabla ilustra en cara una de sus filas el tiempo (en minutos) la cantidad de clientes que estaban en cola antes de ser atendidos, la cantidad de clientes atendidos para el tiempo transcurrido, el tiempo media de espera por cliente y la cantidad total de clientes, lo que representa la suma entre los clientes en cola y los clientes atendidos.
+
+## Autores 💻
+
+*  @gustavoerivero  - [gustavoerivero](https://github.com/gustavoerivero)
+*  @Warloy - [Warloy](https://github.com/Warloy)
+
+
+---
+⌨️ hecho con ❤️ por [Flamethyst] 
