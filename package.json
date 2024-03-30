@@ -23,7 +23,7 @@
     "@react-navigation/native": "^6.0.2",
     "@reduxjs/toolkit": "^2.2.2",
     "@types/react-native": "^0.73.0",
-    "expo": "~50.0.13",
+    "expo": "~50.0.14",
     "expo-dev-client": "~3.3.10",
     "expo-file-system": "^16.0.8",
     "expo-font": "~11.10.3",
