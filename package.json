@@ -21,7 +21,7 @@
     "@gluestack-ui/themed": "^1.1.12",
     "@hookform/resolvers": "^3.3.4",
     "@react-navigation/native": "^6.0.2",
-    "@reduxjs/toolkit": "^2.2.1",
+    "@reduxjs/toolkit": "^2.2.2",
     "@types/react-native": "^0.73.0",
     "expo": "~50.0.13",
     "expo-dev-client": "~3.3.10",
