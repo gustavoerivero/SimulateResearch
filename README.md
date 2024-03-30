@@ -72,11 +72,74 @@ This page shows the results obtained by the simulation. For this purpose, it has
 * **Chart of customers served (Clientes atendidos):** This chart shows the number of customers who have been served.
 * **Data table by iteration (Tabla de datos por iteración):** This table illustrates in each of its rows the time (Tiempo) (in minutes), the number of customers who were in queue before being served (Clientes en cola), the number of customers served for the time elapsed (Clientes atendidos), the average waiting time per customer (Media de espera) and the total number of customers (Total clientes), which represents the sum between customers in queue and customers served.
 
+## Getting started 🚀
+
+The application is developed with React Native and its Expo framework for the frontend. It also makes use of other libraries that are necessary for the correct functioning of the of the application.
+
+### Prerequisites 📋
+
+*[Node.js](https://nodejs.org/en/) version 18.18.0
+*[Expo](https://expo.dev/) as client for the development.
+*[Visual Studio Code](https://code.visualstudio.com/) was used for the project as text editor, but any text editor can also be used.
+
+### Installation 🔧
+
+To begin, we proceed to download the repository. To do this, open the console, go to the folder where you want to save the project and run the following command:
+
+```bash
+  git clone https://github.com/gustavoerivero/SimulateResearch.git
+```
+
+Then you must access the cloned folder in the "SimulateResearch" repository. For a Windows operating system, with the command:
+
+```bash
+cd SimulateResearch
+```
+
+Next, the libraries and dependencies necessary for its execution are installed.
+
+```bash
+npm install
+```
+
+Or, alternatively;
+
+```bash
+yarn install
+```
+
+If none of the above options work, try with;
+
+```bash
+npm i -f
+```
+
+Once the installation of the dependencies is successful, the project is ready to run on an emulator or physical device. To perform a local deployment, proceed as follows:
+
+First, it is necessary to have Expo cli installed, the client used to be able to display the project in question. Once installed, it is necessary to create a build in development mode.
+
+To create the build in development mode, run ```eas build --profile development --platform android``` inside the SimulateResearch project folder.
+
+During the process, the user will be prompted to indicate where to install the created build, whether on an emulator or a physical device connected to the computer.
+
+After that, it will be installed and now it is possible to run the project with the following command the following command:
+
+```bash
+  npm start
+```
+
+or
+
+```bash
+  yarn start
+```
+
+This will start Expo cli. There you will see a menu of options, where you will have to indicate the Android option. After that, the emulator will open (or the Simulate Research project will start on the connected physical device). For more information, you can directly access the [Expo documentation](https://docs.expo.dev/).
+
 ## Authors 💻
 
-*  @gustavoerivero  - [gustavoerivero](https://github.com/gustavoerivero)
+*  @gustavoerivero - [gustavoerivero](https://github.com/gustavoerivero)
 *  @Warloy - [Warloy](https://github.com/Warloy)
 
-
 ---
-⌨️ made with ❤️ by [Flamethyst] 
+⌨️ made with ❤️ by [Flamethyst]
