@@ -18,7 +18,7 @@
     "@expo/vector-icons": "^13.0.0",
     "@gluestack-style/react": "^1.0.52",
     "@gluestack-ui/config": "^1.1.17",
-    "@gluestack-ui/themed": "^1.1.12",
+    "@gluestack-ui/themed": "^1.1.29",
     "@hookform/resolvers": "^3.3.4",
     "@react-navigation/native": "^6.1.17",
     "@reduxjs/toolkit": "^2.2.2",
