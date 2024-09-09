@@ -7461,13 +7461,22 @@ metro-config@0.80.6, metro-config@^0.80.3:
     metro-core "0.80.6"
     metro-runtime "0.80.6"
 
-metro-core@0.80.6, metro-core@^0.80.3, metro-core@^0.80.6:
+metro-core@0.80.6, metro-core@^0.80.3:
   version "0.80.6"
   resolved "https://registry.npmjs.org/metro-core/-/metro-core-0.80.6.tgz"
   integrity sha512-fn4rryTUAwzFJWj7VIPDH4CcW/q7MV4oGobqR6NsuxZoIGYrVpK7pBasumu5YbCqifuErMs5s23BhmrDNeZURw==
   dependencies:
     lodash.throttle "^4.1.1"
     metro-resolver "0.80.6"
+
+metro-core@^0.80.12:
+  version "0.80.12"
+  resolved "https://registry.yarnpkg.com/metro-core/-/metro-core-0.80.12.tgz#5ae337923ab19ff524077efa1aeacdf4480cfa28"
+  integrity sha512-QqdJ/yAK+IpPs2HU/h5v2pKEdANBagSsc6DRSjnwSyJsCoHlmyJKCaCJ7KhWGx+N4OHxh37hoA8fc2CuZbx0Fw==
+  dependencies:
+    flow-enums-runtime "^0.0.6"
+    lodash.throttle "^4.1.1"
+    metro-resolver "0.80.12"
 
 metro-file-map@0.80.6:
   version "0.80.6"
@@ -7493,6 +7502,13 @@ metro-minify-terser@0.80.6:
   integrity sha512-83eZaH2+B+jP92KuodPqXknzwmiboKAuZY4doRfTEEXAG57pNVNN6cqSRJlwDnmaTBKRffxoncBXbYqHQgulgg==
   dependencies:
     terser "^5.15.0"
+
+metro-resolver@0.80.12:
+  version "0.80.12"
+  resolved "https://registry.yarnpkg.com/metro-resolver/-/metro-resolver-0.80.12.tgz#e3815914c21315b04db200032c3243a4cc22dfb6"
+  integrity sha512-PR24gYRZnYHM3xT9pg6BdbrGbM/Cu1TcyIFBVlAk7qDAuHkUNQ1nMzWumWs+kwSvtd9eZGzHoucGJpTUEeLZAw==
+  dependencies:
+    flow-enums-runtime "^0.0.6"
 
 metro-resolver@0.80.6:
   version "0.80.6"
