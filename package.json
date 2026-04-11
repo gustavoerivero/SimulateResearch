@@ -36,7 +36,7 @@
     "expo-web-browser": "~12.8.2",
     "fbjs": "^3.0.5",
     "formik": "^2.4.5",
-    "mathjs": "^12.4.1",
+    "mathjs": "^15.2.0",
     "metro-core": "^0.80.6",
     "mime": "^4.0.1",
     "react": "18.2.0",
